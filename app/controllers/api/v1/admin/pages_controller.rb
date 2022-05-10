@@ -1,4 +1,4 @@
-class Admin::PagesController < ApplicationController
+class Api::V1::Admin::PagesController < Api::V1::ApplicationController
     before_action :authorize_request
 
     def create

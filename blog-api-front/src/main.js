@@ -12,7 +12,7 @@ import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
 import axios from 'axios'
 
-axios.defaults.baseURL = 'http://0.0.0.0:3000/api/V1/'
+axios.defaults.baseURL = 'http://0.0.0.0:3000/api/v1/'
 // axios.defaults.withCredentials = true
 
 Vue.use(axios)

@@ -1,4 +1,4 @@
-class CommentsController < ApplicationController
+class Api::V1::CommentsController < Api::V1::ApplicationController
     def index
         @page = Page.find(params[:page_id])
         @comments = @page.comments.all

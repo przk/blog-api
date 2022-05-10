@@ -1,4 +1,4 @@
-class Admin::UsersController < ApplicationController
+class Api::V1::Admin::UsersController < Api::V1::ApplicationController
     before_action :authorize_request, except: :create
     before_action :find_user, except: %i[update index show adminpatch thisuser]
 

@@ -1,4 +1,4 @@
-class Admin::CommentsController < ApplicationController
+class Api::V1::Admin::CommentsController < Api::V1::ApplicationController
     before_action :authorize_request
 
     def create

@@ -1,4 +1,4 @@
-class ApplicationController < ActionController::API
+class Api::V1::ApplicationController < ActionController::API
     # include JWTSessions::RailsAuthorization
     # rescue_from JWTSessions::Errors::Unauthorized, with: :not_authorized
     include Pundit::Authorization
