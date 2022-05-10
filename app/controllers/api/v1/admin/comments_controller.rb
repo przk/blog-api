@@ -5,7 +5,7 @@ class Api::V1::Admin::CommentsController < Api::V1::ApplicationController
         authorize Comment
         @page = Page.find(params[:page_id])
         @comment = @page.comments.create(params.permit(:name, :body, :page_id))
-        render json: @comment
+        render json: @comment.as_json(except: [:created_at, :updated_at])
     end
     
     def destroy
@@ -13,6 +13,6 @@ class Api::V1::Admin::CommentsController < Api::V1::ApplicationController
         @comment = @page.comments.find(params[:id])
         authorize @comment
         @comment.destroy
-        render json: "Comment destroyed!"
+        render json: { message: 'Comment destroyed!' }
     end
 end
