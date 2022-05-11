@@ -1,17 +1,17 @@
 <template>
   <div>
-    <div v-for = "comment in comments" v-bind:key = "comment.id">
+    <div v-for="comment in comments" v-bind:key="comment.id">
       <b>{{ comment.name }}:</b> {{ comment.body }}
     </div>
-    <form v-if = "signedIn" class = "form-group" v-on:submit = "newComment">
+    <form v-if="signedIn" class="form-group" v-on:submit="newComment">
       <h4>Add your comment</h4>
       <small>Your email address will be published</small>
-      <input type = "email" v-model = "uname" placeholder = "name" class = "form-control" disabled = "disabled" v-bind = "uname" hidden = "hidden" />
-      <textarea v-model = "comment" placeholder = "comment" class = "form-control" />
-      <button type = "submit" class = "btn btn-primary">Submit</button>
+      <input type="email" v-model="uname" placeholder="name" class="form-control" disabled="disabled" hidden="hidden" />
+      <textarea v-model="comment" placeholder="comment" class="form-control" />
+      <button type="submit" class="btn btn-primary">Submit</button>
     </form>
     <div v-else>
-      <router-link to = "/signin">Sign in</router-link> to add a comment
+      <router-link to="/signin">Sign in</router-link> to add a comment
     </div>
   </div>
 </template>

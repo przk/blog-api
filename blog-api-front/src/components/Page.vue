@@ -1,10 +1,10 @@
 <template>
   <div>
-    <router-link to = "/">&lt; Main page</router-link>
+    <router-link to="/">&lt; Main page</router-link>
       <h2>{{ title }}
-        <span v-if = "admin">
-          <button class = "btn btn-outline-danger btn-sm" @click = "deletePage">Delete</button>
-          <router-link :to = "'/editpage/' + this.$route.params.pageId" class = "btn btn-outline-primary btn-sm">Edit</router-link>
+        <span v-if="admin">
+          <button class="btn btn-outline-danger btn-sm" @click="deletePage">Delete</button>
+          <router-link :to="'/editpage/' + this.$route.params.pageId" class="btn btn-outline-primary btn-sm">Edit</router-link>
         </span>
       </h2>
       <p>{{ body }}</p>

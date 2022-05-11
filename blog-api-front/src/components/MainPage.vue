@@ -1,10 +1,10 @@
 <template>
   <div id="main">
     <h1>Pages</h1>
-    <div class = "row list mx-0">
-      <router-link :to = "'/page/' + page.id" v-for = "page in pages" v-bind:key = "page.id" class = "list-row alternate">{{ page.title }}</router-link>
+    <div class="row list mx-0">
+      <router-link :to="'/page/' + page.id" v-for="page in pages" :key="page.id" class="list-row alternate">{{ page.title }}</router-link>
     </div>
-    <router-link v-if = "signedIn && admin" to = "newpage" class = "btn btn-warning">Add page +</router-link>
+    <router-link v-if="signedIn && admin" to="newpage" class="btn btn-warning">Add page +</router-link>
   </div>
 </template>
 

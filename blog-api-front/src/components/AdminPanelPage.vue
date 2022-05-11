@@ -1,13 +1,13 @@
 <template>
   <div>
-    <router-link to = "/panel/pages">&lt; Admin panel/Pages</router-link>
+    <router-link to="/panel/pages">&lt; Admin panel/Pages</router-link>
     <h1>Page comments</h1>
     <div class="row list mx-0">
-      <span v-for = "comment in comments" v-bind:key = "comment" class = "list-row alternate">
-        <button class = "btn btn-danger btn-sm" @click = "deleteComment(comment.id)">Delete</button>
+      <span v-for="comment in comments" :key="comment" class="list-row alternate">
+        <button class="btn btn-danger btn-sm" @click="deleteComment(comment.id)">Delete</button>
         <b>{{comment.name}}:</b> {{comment.body}}
       </span>
-      <span v-if = "!comments[0]">No comments</span>
+      <span v-if="!comments[0]">No comments</span>
     </div>
   </div>
 </template>

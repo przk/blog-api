@@ -1,17 +1,17 @@
 <template>
   <div>
     <h1>User profile</h1>
-    <form v-on:submit = "submitForm">
-      <label for = "name">Name</label>
-      <input type = "text" id = "name" v-model = "uname" class = "form-control" />
-      <label for = "email">Email</label>
-      <input type = "email" id = "email" v-model = "email" class = "form-control" />
-      <label for = "role">Role</label>
-      <input type = "text" id = "role" v-model = "role" class = "form-control" disabled = "disabled" />
-      <label for = "created">Created at</label>
-      <input type = "text" id = "created" v-model = "createdAt" class = "form-control" disabled = "disabled" />
-      <button type = "submit" class = "btn btn-primary">Submit</button>
-      <router-link to = "/" class = "btn btn-secondary">Cancel</router-link>
+    <form @submit="submitForm">
+      <label for="name">Name</label>
+      <input type="text" id="name" v-model="uname" class="form-control" />
+      <label for="email">Email</label>
+      <input type="email" id="email" v-model="email" class="form-control" />
+      <label for="role">Role</label>
+      <input type="text" id="role" v-model="role" class="form-control" disabled="disabled" />
+      <label for="created">Created at</label>
+      <input type="text" id="created" v-model="createdAt" class="form-control" disabled="disabled" />
+      <button type="submit" class="btn btn-primary">Submit</button>
+      <router-link to="/" class="btn btn-secondary">Cancel</router-link>
     </form>
   </div>
 </template>

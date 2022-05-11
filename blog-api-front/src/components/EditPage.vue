@@ -1,17 +1,17 @@
 <template>
   <div>
-    <router-link :to = "'/page/' + this.$route.params.pageId">&lt; Page</router-link>
-    <form v-on:submit = "editPage">
-      <div class = "form-group">
-        <label for = "title">Title</label>
-        <input type = "text" v-model = "pgtitle" id = "title" class = "form-control" />
+    <router-link :to="'/page/' + this.$route.params.pageId">&lt; Page</router-link>
+    <form @submit="editPage">
+      <div class="form-group">
+        <label for="title">Title</label>
+        <input type="text" v-model="pgtitle" id="title" class="form-control" />
       </div>
-      <div class = "form-group">
-        <label for = "body">Content</label>
-        <textarea v-model = "pgbody" id = "body" class = "form-control" />
+      <div class="form-group">
+        <label for="body">Content</label>
+        <textarea v-model="pgbody" id="body" class="form-control" />
       </div>
-      <button type = "submit" class = "btn btn-primary">Submit</button>
-      <router-link :to = "'/page/' + this.$route.params.pageId" class = "btn btn-secondary">Cancel</router-link>
+      <button type="submit" class="btn btn-primary">Submit</button>
+      <router-link :to="'/page/' + this.$route.params.pageId" class="btn btn-secondary">Cancel</router-link>
     </form>
   </div>
 </template>

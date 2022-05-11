@@ -1,26 +1,26 @@
 <template>
   <div>
-    <form class = "form-signup" @submit.prevent = "signup">
-      <div class = "alert alert-danger" v-if = "error">{{ error }}</div>
-      <div class = "form-group">
-        <label for = "name">Username</label>
-        <input v-model = "name" type = "text" class = "form-control" id = "name" placeholder = "Username" />
+    <form class="form-signup" @submit.prevent="signup">
+      <div class="alert alert-danger" v-if="error">{{ error }}</div>
+      <div class="form-group">
+        <label for="name">Username</label>
+        <input v-model="name" type="text" class="form-control" id="name" placeholder="Username" />
       </div>
-      <div class = "form-group">
-        <label for = "email">Email address</label>
-        <input v-model = "email" type = "email" class = "form-control" id = "email" placeholder = "email@example.com" />
+      <div class="form-group">
+        <label for="email">Email address</label>
+        <input v-model="email" type="email" class="form-control" id="email" placeholder="email@example.com" />
       </div>
-      <div class = "form-group">
-        <label for = "password">Password</label>
-        <input v-model = "password" type = "password" class = "form-control" id = "password" placeholder = "Password" />
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input v-model="password" type="password" class="form-control" id="password" placeholder="Password" />
       </div>
-      <div class = "form-group">
-        <label for = "password_confirmation">Password confirmation</label>
-        <input v-model = "password_confirmation" type = "password" class = "form-control" id = "password_confirmation" placeholder = "Password" />
+      <div class="form-group">
+        <label for="password_confirmation">Password confirmation</label>
+        <input v-model="password_confirmation" type="password" class="form-control" id="password_confirmation" placeholder="Password" />
       </div>
-      <button type = "submit" class = "btn btn-primary mb-3">Sign up</button>
+      <button type="submit" class="btn btn-primary mb-3">Sign up</button>
       <div>
-        <router-link to = "/signin">Sign in</router-link>
+        <router-link to="/signin">Sign in</router-link>
       </div>
     </form>
   </div>
