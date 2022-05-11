@@ -30,12 +30,6 @@ export default {
       error: ''
     }
   },
-  created () {
-    this.checkSignedIn()
-  },
-  updated () {
-    this.checkSignedIn()
-  },
   mounted () {
     if (localStorage.csrf) this.$router.push('/')
   },
@@ -52,6 +46,7 @@ export default {
           localStorage.email = this.email
           localStorage.role = response.data.role
           this.error = ''
+          this.$router.push('/')
           this.$router.go()
         })
         .catch(error => {
@@ -61,11 +56,6 @@ export default {
           delete localStorage.signedIn
           delete localStorage.email
         })
-    },
-    checkSignedIn () {
-      if (localStorage.signedIn) {
-        this.$router.push('/')
-      }
     }
   }
 }

@@ -33,7 +33,13 @@ export default new Router({
     {
       path: '/signin',
       name: 'Signin',
-      component: () => import('@/components/Signin')
+      component: () => import('@/components/Signin'),
+      beforeEnter: (to, from, next) => {
+        if (localStorage.signedIn) {
+          // this.$router.push('/')
+          return false
+        } else next()
+      }
     },
     {
       path: '/signup',
