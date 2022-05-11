@@ -40,10 +40,8 @@ export default{
     deleteComment (commentId) {
       if (confirm('Do you want to remove this comment forever?')) {
         axios.delete(`admin/pages/${this.$route.params.pageId}/comments/${commentId}`, { headers: { 'Authorization': 'Basic ' + localStorage.csrf } })
-          .then(response => {
-            if (response.status === 200) {
-              this.$router.go()
-            }
+          .then(() => {
+            this.$router.go()
           }).catch(error => {
             console.log(error)
           })

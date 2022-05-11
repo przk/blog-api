@@ -50,10 +50,8 @@ export default {
     submitUser (obj) {
       obj.preventDefault()
       axios.patch(`/admin/patchuser/${this.$route.params.userId}`, null, { params: { name: this.uname, email: this.email, role: this.role }, headers: { 'Authorization': 'Basic ' + localStorage.csrf } })
-        .then(response => {
-          if (response.status === 200) {
-            this.$router.go()
-          }
+        .then(() => {
+          this.$router.go()
         }).catch(error => {
           console.log(error)
           this.error = error.message

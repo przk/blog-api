@@ -38,9 +38,7 @@ export default {
       obj.preventDefault()
       axios.post('admin/pages/', null, { params: { title: this.pgtitle, body: this.pgbody }, headers: { 'Authorization': 'Basic ' + localStorage.csrf } })
         .then(response => {
-          if (response.status === 200) {
-            this.$router.push('page/' + response.data.id)
-          }
+          this.$router.push('page/' + response.data.id)
         }).catch(error => {
           console.log(error)
           this.error = error.message

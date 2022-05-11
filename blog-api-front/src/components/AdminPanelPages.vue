@@ -42,10 +42,8 @@ export default {
     deletePage (pageId) {
       if (confirm('Do you want to delete this page forever?')) {
         axios.delete(`admin/pages/${pageId}`, { headers: { 'Authorization': 'Basic ' + localStorage.csrf } })
-          .then(response => {
-            if (response.status === 200) {
-              this.$router.go()
-            }
+          .then(() => {
+            this.$router.go()
           }).catch(error => {
             console.log(error)
           })

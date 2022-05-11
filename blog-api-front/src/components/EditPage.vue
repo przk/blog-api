@@ -44,10 +44,8 @@ export default {
       obj.preventDefault()
       console.log(obj)
       axios.patch(`admin/pages/${this.$route.params.pageId}`, null, { params: { title: this.pgtitle, body: this.pgbody }, headers: { 'Authorization': 'Basic ' + localStorage.csrf } })
-        .then(response => {
-          if (response.status === 200) {
-            this.$router.push(`/page/${this.$route.params.pageId}`)
-          }
+        .then(() => {
+          this.$router.push(`/page/${this.$route.params.pageId}`)
         }).catch(error => {
           console.log(error)
         })
