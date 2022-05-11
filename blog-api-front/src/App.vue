@@ -57,6 +57,7 @@ export default {
       delete localStorage.csrf
       delete localStorage.signedIn
       delete localStorage.email
+      delete localStorage.role
       this.email = ''
       this.csrf = ''
       this.$router.go()

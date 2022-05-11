@@ -20,13 +20,6 @@ export default {
   data () {
     return {
     }
-  },
-  mounted () {
-    if (!localStorage.signedIn) {
-      this.$router.push('/signin')
-    } else if (localStorage.role !== 'admin') {
-      this.$router.go(-1)
-    }
   }
 }
 </script>

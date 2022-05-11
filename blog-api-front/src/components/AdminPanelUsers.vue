@@ -20,11 +20,6 @@ export default {
     }
   },
   mounted () {
-    if (!localStorage.signedIn) {
-      this.$router.push('/signin')
-    } else if (localStorage.role !== 'admin') {
-      this.$router.go(-1)
-    }
     axios.get('/users', { headers: { 'Authorization': 'Basic ' + localStorage.csrf } })
       .then(response => {
         this.users = response.data

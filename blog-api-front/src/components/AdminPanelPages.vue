@@ -25,11 +25,6 @@ export default {
     }
   },
   mounted () {
-    if (!localStorage.signedIn) {
-      this.$router.push('/signin')
-    } else if (localStorage.role !== 'admin') {
-      this.$router.go(-1)
-    }
     axios.get('/pages')
       .then(response => {
         this.pages = response.data

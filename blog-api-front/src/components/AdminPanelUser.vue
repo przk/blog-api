@@ -34,8 +34,6 @@ export default {
     }
   },
   mounted () {
-    if (!localStorage.csrf) this.$router.push('/signin')
-    else if (localStorage.role !== 'admin') this.$router.go(-1)
     axios.get(`$/admin/users/${this.$route.params.userId}`, { headers: { 'Authorization': 'Basic ' + localStorage.csrf } })
       .then(response => {
         this.uname = response.data.name
