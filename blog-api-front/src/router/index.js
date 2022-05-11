@@ -1,19 +1,5 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import MainPage from '@/components/MainPage'
-import Signin from '@/components/Signin'
-import Signup from '@/components/Signup'
-import Page from '@/components/Page'
-import ErrNotFound from '@/components/ErrNotFound'
-import Comments from '@/components/Comments'
-import NewPage from '@/components/NewPage'
-import EditPage from '@/components/EditPage'
-import AdminPanel from '@/components/AdminPanel'
-import AdminPanelUsers from '@/components/AdminPanelUsers'
-import AdminPanelPages from '@/components/AdminPanelPages'
-import AdminPanelPage from '@/components/AdminPanelPage'
-import AdminPanelUser from '@/components/AdminPanelUser'
-import EditUser from '@/components/EditUser'
 
 Vue.use(Router)
 
@@ -22,72 +8,72 @@ export default new Router({
     {
       path: '/',
       name: 'MainPage',
-      component: MainPage
+      component: import('@/components/MainPage')
     },
     {
       path: '/page/:pageId',
       name: 'Page',
-      component: Page
+      component: import('@/components/Page')
     },
     {
       path: '/newpage',
       name: 'newPage',
-      component: NewPage
+      component: import('@/components/NewPage')
     },
     {
       path: '/editpage/:pageId',
       name: 'editPage',
-      component: EditPage
+      component: import('@/components/EditPage')
     },
     {
       path: '/page/:pageId/comments/',
       name: 'Comments',
-      component: Comments
+      component: import('@/components/Comments')
     },
     {
       path: '/signin',
       name: 'Signin',
-      component: Signin
+      component: import('@/components/Signin')
     },
     {
       path: '/signup',
       name: 'Signup',
-      component: Signup
+      component: import('@/components/Signup')
     },
     {
       path: '/404',
       name: 'ErrNotFound',
-      component: ErrNotFound
+      component: import('@/components/ErrNotFound')
     },
     {
       path: '/panel',
       name: 'AdminPanel',
-      component: AdminPanel
+      component: import('@/components/AdminPanel')
     },
     {
       path: '/panel/users',
       name: 'AdminPanelUsers',
-      component: AdminPanelUsers
+      component: import('@/components/AdminPanelUsers')
     },
     {
       path: '/panel/pages',
       name: 'AdminPanelPages',
-      component: AdminPanelPages
+      component: import('@/components/AdminPanelPages')
     },
     {
       path: '/panel/pages/:pageId',
       name: 'AdminPanelPage',
-      component: AdminPanelPage
+      component: import('@/components/AdminPanelPage')
     },
     {
       path: '/panel/users/:userId',
       name: 'AdminPanelUser',
-      component: AdminPanelUser
+      component: import('@/components/AdminPanelUser')
     },
     {
       path: '/edituser',
       name: 'EditUser',
-      component: EditUser
+      component: import('@/components/EditUser')
     }
   ]
 })
