@@ -52,7 +52,7 @@ export default {
           localStorage.email = this.email
           localStorage.role = response.data.role
           this.error = ''
-          window.location.reload()
+          this.$router.go()
         })
         .catch(error => {
           this.error = 'Login failed'

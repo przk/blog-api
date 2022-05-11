@@ -43,7 +43,7 @@ export default {
       axios.post(`admin/pages/${this.$route.params.pageId}/comments`, null, { params: { name: this.uname, body: this.comment }, headers: { 'Authorization': 'Basic ' + localStorage.csrf } })
         .then(response => {
           if (response.data.name === this.uname) {
-            window.location.reload()
+            this.$router.go()
           }
         }).catch(error => {
           console.log(error)

@@ -44,7 +44,7 @@ securedAxiosInstance.interceptors.response.use(null, error => {
         delete localStorage.csrf
         delete localStorage.signedIn
         // redirect to signin if refresh fails
-        location.replace('/')
+        this.$router.push('/')
         return Promise.reject(error)
       })
   } else {

@@ -35,7 +35,7 @@ export default {
         this.body = response.data.body
       }).catch(error => {
         console.log(error)
-        location.replace('#/404')
+        this.$router.push('#/404')
       })
   },
   components: {

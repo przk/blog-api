@@ -59,7 +59,7 @@ export default {
       delete localStorage.email
       this.email = ''
       this.csrf = ''
-      window.location.reload()
+      this.$router.go()
     }
   }
 }

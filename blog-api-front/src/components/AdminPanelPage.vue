@@ -42,7 +42,7 @@ export default{
         axios.delete(`admin/pages/${this.$route.params.pageId}/comments/${commentId}`, { headers: { 'Authorization': 'Basic ' + localStorage.csrf } })
           .then(response => {
             if (response.status === 200) {
-              window.location.reload()
+              this.$router.go()
             }
           }).catch(error => {
             console.log(error)
