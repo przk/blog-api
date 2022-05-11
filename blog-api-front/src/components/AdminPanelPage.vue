@@ -39,7 +39,7 @@ export default{
   methods: {
     deleteComment (commentId) {
       if (confirm('Do you want to remove this comment forever?')) {
-        axios.delete('admin/pages/' + this.$route.params.pageId + '/comments/' + commentId, { headers: { 'Authorization': 'Basic ' + localStorage.csrf } })
+        axios.delete(`admin/pages/${this.$route.params.pageId}/comments/${commentId}`, { headers: { 'Authorization': 'Basic ' + localStorage.csrf } })
           .then(response => {
             if (response.status === 200) {
               window.location.reload()

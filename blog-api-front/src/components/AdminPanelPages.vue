@@ -8,7 +8,7 @@
         <router-link :to="'/editpage/' + page.id" class="btn btn-secondary btn-sm">Edit</router-link>
         <router-link :to="'/panel/pages/' + page.id" class="btn btn-primary btn-sm">Comments</router-link>
         <button class="btn btn-danger btn-sm" @click="deletePage(page.id)">Delete</button>
-        <router-link :to="'/page/' + page.id">{{page.title}}</router-link>
+        <router-link :to="`/page/${page.id}`">{{page.title}}</router-link>
       </span>
     </div>
   </div>
@@ -41,7 +41,7 @@ export default {
   methods: {
     deletePage (pageId) {
       if (confirm('Do you want to delete this page forever?')) {
-        axios.delete('admin/pages/' + pageId, { headers: { 'Authorization': 'Basic ' + localStorage.csrf } })
+        axios.delete(`admin/pages/${pageId}`, { headers: { 'Authorization': 'Basic ' + localStorage.csrf } })
           .then(response => {
             if (response.status === 200) {
               this.$router.go()

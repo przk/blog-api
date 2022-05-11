@@ -28,7 +28,7 @@ export default {
     }
   },
   mounted () {
-    axios.get('pages/' + this.$route.params.pageId + '/comments')
+    axios.get(`pages/${this.$route.params.pageId}/comments`)
       .then(response => {
         this.comments = response.data
       }).catch(error => {
@@ -40,7 +40,7 @@ export default {
   methods: {
     newComment (obj) {
       obj.preventDefault()
-      axios.post('admin/pages/' + this.$route.params.pageId + '/comments', null, { params: { name: this.uname, body: this.comment }, headers: { 'Authorization': 'Basic ' + localStorage.csrf } })
+      axios.post(`admin/pages/${this.$route.params.pageId}/comments`, null, { params: { name: this.uname, body: this.comment }, headers: { 'Authorization': 'Basic ' + localStorage.csrf } })
         .then(response => {
           if (response.data.name === this.uname) {
             window.location.reload()

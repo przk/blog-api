@@ -36,7 +36,7 @@ export default {
   mounted () {
     if (!localStorage.csrf) this.$router.push('/signin')
     else if (localStorage.role !== 'admin') this.$router.go(-1)
-    axios.get('/admin/users/' + this.$route.params.userId, { headers: { 'Authorization': 'Basic ' + localStorage.csrf } })
+    axios.get(`$/admin/users/${this.$route.params.userId}`, { headers: { 'Authorization': 'Basic ' + localStorage.csrf } })
       .then(response => {
         this.uname = response.data.name
         this.email = response.data.email
@@ -49,7 +49,7 @@ export default {
   methods: {
     submitUser (obj) {
       obj.preventDefault()
-      axios.patch('/admin/patchuser/' + this.$route.params.userId, null, { params: { name: this.uname, email: this.email, role: this.role }, headers: { 'Authorization': 'Basic ' + localStorage.csrf } })
+      axios.patch(`/admin/patchuser/${this.$route.params.userId}`, null, { params: { name: this.uname, email: this.email, role: this.role }, headers: { 'Authorization': 'Basic ' + localStorage.csrf } })
         .then(response => {
           if (response.status === 200) {
             this.$router.go()

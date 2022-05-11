@@ -49,7 +49,7 @@ export default{
   methods: {
     submitForm (obj) {
       obj.preventDefault()
-      axios.patch('/admin/users/' + this.id, null, { params: { name: this.uname, email: this.email }, headers: { 'Authorization': 'Basic ' + localStorage.csrf } })
+      axios.patch(`/admin/users/${this.id}`, null, { params: { name: this.uname, email: this.email }, headers: { 'Authorization': 'Basic ' + localStorage.csrf } })
         .then(response => {
           if (response.status === 200) {
             this.$router.go(-1)
