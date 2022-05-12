@@ -21,6 +21,7 @@ class Api::V1::Admin::UsersController < Api::V1::ApplicationController
         @user = User.find(params['id'])
         @user.email = params['email']
         @user.role = params['role']
+        @user.name = params['name']
         if @user.save
             render json: @user.as_json(only: [:id, :name, :email, :created_at, :role]), status: :ok
         else
