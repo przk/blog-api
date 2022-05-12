@@ -40,12 +40,6 @@ export default {
       error: ''
     }
   },
-  created () {
-    this.checkSignedIn()
-  },
-  updated () {
-    this.checkSignedIn()
-  },
   methods: {
     signup () {
       axios.post('/users', { name: this.name, email: this.email, password: this.password, password_confirmation: this.password_confirmation })
@@ -61,11 +55,6 @@ export default {
           this.error = (error.message) || ''
           for (var err in error.response.data.errors) this.error += ' ' + error.response.data.errors[err]
         })
-    },
-    checkSignedIn () {
-      if (localStorage.signedIn) {
-        this.$router.replace('/')
-      }
     }
   }
 }
