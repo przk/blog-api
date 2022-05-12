@@ -19,8 +19,6 @@
 </template>
 
 <script>
-import axios from 'axios'
-
 export default {
   name: 'Signin',
   data () {
@@ -32,13 +30,12 @@ export default {
   },
   methods: {
     signin () {
-      // this.$http.plain.post('/signin', {email: this.email, password: this.password})
-      axios.post('/auth/login', {email: this.email, password: this.password})
+      this.plain.post('/auth/login', {email: this.email, password: this.password})
         .then(response => {
           if (!response.data.token) {
             return
           }
-          localStorage.setItem('csrf', response.data.token) // .csrf
+          localStorage.setItem('csrf', response.data.token)
           localStorage.signedIn = true
           localStorage.email = this.email
           localStorage.role = response.data.role

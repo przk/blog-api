@@ -9,7 +9,6 @@
 </template>
 
 <script>
-import axios from 'axios'
 export default {
   name: 'MainPage',
   data () {
@@ -22,7 +21,7 @@ export default {
   mounted () {
     this.signedIn = localStorage.signedIn
     this.admin = localStorage.role === 'admin'
-    axios.get('pages')
+    this.plain.get('pages')
       .then(response => (this.pages = response.data))
       .catch(error => console.log(error))
   }

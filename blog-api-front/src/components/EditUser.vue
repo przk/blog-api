@@ -17,8 +17,6 @@
 </template>
 
 <script>
-import axios from 'axios'
-
 export default{
   name: 'EditUser',
   data () {
@@ -31,7 +29,7 @@ export default{
     }
   },
   mounted () {
-    axios.get('/admin/user', { headers: { 'Authorization': 'Basic ' + localStorage.csrf } })
+    this.secured.get('/admin/user')
       .then(response => {
         this.id = response.data.id
         this.uname = response.data.name
@@ -46,7 +44,7 @@ export default{
   methods: {
     submitForm (obj) {
       obj.preventDefault()
-      axios.patch(`/admin/users/${this.id}`, null, { params: { name: this.uname, email: this.email }, headers: { 'Authorization': 'Basic ' + localStorage.csrf } })
+      this.secured.patch(`/admin/users/${this.id}`, null, { params: { name: this.uname, email: this.email } })
         .then(() => {
           this.$router.go(-1)
         })

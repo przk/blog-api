@@ -13,8 +13,6 @@
 </template>
 
 <script>
-import axios from 'axios'
-
 export default{
   name: 'AdminPanelPage',
   data () {
@@ -23,7 +21,7 @@ export default{
     }
   },
   mounted () {
-    axios.get('/pages/' + this.$route.params.pageId + '/comments')
+    this.plain.get('/pages/' + this.$route.params.pageId + '/comments')
       .then(response => {
         this.comments = response.data
       })
@@ -34,7 +32,7 @@ export default{
   methods: {
     deleteComment (commentId) {
       if (confirm('Do you want to remove this comment forever?')) {
-        axios.delete(`admin/pages/${this.$route.params.pageId}/comments/${commentId}`, { headers: { 'Authorization': 'Basic ' + localStorage.csrf } })
+        this.secured.delete(`admin/pages/${this.$route.params.pageId}/comments/${commentId}`)
           .then(() => {
             this.$router.go()
           }).catch(error => {

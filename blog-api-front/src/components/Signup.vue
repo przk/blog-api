@@ -27,8 +27,6 @@
 </template>
 
 <script>
-import axios from 'axios'
-
 export default {
   name: 'Signup',
   data () {
@@ -42,7 +40,7 @@ export default {
   },
   methods: {
     signup () {
-      axios.post('/users', { name: this.name, email: this.email, password: this.password, password_confirmation: this.password_confirmation })
+      this.plain.post('/users', { name: this.name, email: this.email, password: this.password, password_confirmation: this.password_confirmation })
         .then(response => {
           if (!response.data.name) {
             this.error = response.data

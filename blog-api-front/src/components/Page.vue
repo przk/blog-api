@@ -14,7 +14,6 @@
 </template>
 
 <script>
-import axios from 'axios'
 import Comments from './Comments'
 
 export default {
@@ -29,7 +28,7 @@ export default {
   },
   mounted () {
     if (localStorage.csrf && localStorage.role === 'admin') this.admin = true
-    axios.get(`pages/${this.$route.params.pageId}`)
+    this.plain.get(`pages/${this.$route.params.pageId}`)
       .then(response => {
         this.title = response.data.title
         this.body = response.data.body
@@ -44,7 +43,7 @@ export default {
   methods: {
     deletePage () {
       if (confirm('Do you want to delete this page forever?')) {
-        axios.delete(`admin/pages/${this.$route.params.pageId}`, { headers: { 'Authorization': 'Basic ' + localStorage.csrf } })
+        this.secured.delete(`admin/pages/${this.$route.params.pageId}`)
           .then(() => {
             this.$router.push('/')
           }).catch(error => {

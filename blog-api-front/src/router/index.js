@@ -35,7 +35,8 @@ export default new Router(
       {
         path: '/newpage',
         name: 'newPage',
-        component: () => import('@/components/NewPage')
+        component: () => import('@/components/NewPage'),
+        beforeEnter: checkIfAdminOrGoBack
       },
       {
         path: '/editpage/:pageId',

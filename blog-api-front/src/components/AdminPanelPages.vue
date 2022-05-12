@@ -15,8 +15,6 @@
 </template>
 
 <script>
-import axios from 'axios'
-
 export default {
   name: 'AdminPanelPages',
   data () {
@@ -25,7 +23,7 @@ export default {
     }
   },
   mounted () {
-    axios.get('/pages')
+    this.plain.get('/pages')
       .then(response => {
         this.pages = response.data
       })
@@ -36,7 +34,7 @@ export default {
   methods: {
     deletePage (pageId) {
       if (confirm('Do you want to delete this page forever?')) {
-        axios.delete(`admin/pages/${pageId}`, { headers: { 'Authorization': 'Basic ' + localStorage.csrf } })
+        this.secured.delete(`admin/pages/${pageId}`)
           .then(() => {
             this.$router.go()
           }).catch(error => {

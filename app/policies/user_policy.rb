@@ -41,7 +41,7 @@ class UserPolicy
     end
 
     def thisuser?
-      @user.email?
+      @user != nil
     end
   
     def destroy?

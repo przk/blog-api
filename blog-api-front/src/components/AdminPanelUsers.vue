@@ -10,8 +10,6 @@
 </template>
 
 <script>
-import axios from 'axios'
-
 export default {
   name: 'AdminPanelUsers',
   data () {
@@ -20,7 +18,7 @@ export default {
     }
   },
   mounted () {
-    axios.get('/users', { headers: { 'Authorization': 'Basic ' + localStorage.csrf } })
+    this.secured.get('/users')
       .then(response => {
         this.users = response.data
       })

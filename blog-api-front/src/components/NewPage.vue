@@ -18,8 +18,6 @@
 </template>
 
 <script>
-import axios from 'axios'
-
 export default {
   name: 'NewPage',
   data () {
@@ -29,14 +27,10 @@ export default {
       error: ''
     }
   },
-  mounted () {
-    if (!localStorage.csrf) this.$router.push('/signin')
-    else if (localStorage.role !== 'admin') this.$router.go(-1)
-  },
   methods: {
     newPage (obj) {
       obj.preventDefault()
-      axios.post('admin/pages/', null, { params: { title: this.pgtitle, body: this.pgbody }, headers: { 'Authorization': 'Basic ' + localStorage.csrf } })
+      this.secured.post('admin/pages/', null, { params: { title: this.pgtitle, body: this.pgbody } })
         .then(response => {
           this.$router.push('page/' + response.data.id)
         }).catch(error => {

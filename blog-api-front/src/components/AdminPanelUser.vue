@@ -22,8 +22,6 @@
 </template>
 
 <script>
-import axios from 'axios'
-
 export default {
   name: 'AdminPanelUser',
   data () {
@@ -34,7 +32,7 @@ export default {
     }
   },
   mounted () {
-    axios.get(`$/admin/users/${this.$route.params.userId}`, { headers: { 'Authorization': 'Basic ' + localStorage.csrf } })
+    this.secured.get(`/admin/users/${this.$route.params.userId}`)
       .then(response => {
         this.uname = response.data.name
         this.email = response.data.email
@@ -47,7 +45,7 @@ export default {
   methods: {
     submitUser (obj) {
       obj.preventDefault()
-      axios.patch(`/admin/patchuser/${this.$route.params.userId}`, null, { params: { name: this.uname, email: this.email, role: this.role }, headers: { 'Authorization': 'Basic ' + localStorage.csrf } })
+      this.secured.patch(`/admin/patchuser/${this.$route.params.userId}`, null, { params: { name: this.uname, email: this.email, role: this.role } })
         .then(() => {
           this.$router.go()
         }).catch(error => {
