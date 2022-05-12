@@ -17,7 +17,6 @@ const plainAxiosInstance = axios.create({
 })
 
 securedAxiosInstance.interceptors.request.use(config => {
-  const method = config.method.toUpperCase()
   config.headers = {
     ...config.headers,
     'Authorization': 'Basic ' + localStorage.csrf
