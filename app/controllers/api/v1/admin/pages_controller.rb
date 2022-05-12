@@ -4,7 +4,7 @@ class Api::V1::Admin::PagesController < Api::V1::ApplicationController
     def create
         authorize Page
         @page = Page.create(title: params[:title], body: params[:body])
-        render json: @page.as_json(except: [:created_at, :updated_at])
+        render json: @page.as_json(only: [:id, :title, :body]), status: :created
     end
 
     def update

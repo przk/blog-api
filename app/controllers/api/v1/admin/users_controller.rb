@@ -4,7 +4,7 @@ class Api::V1::Admin::UsersController < Api::V1::ApplicationController
 
     def show
         @user = User.find(params['id'])
-        render json: @user.as_json(except: [:password_digest, :updated_at])
+        render json: @user.as_json(only: [:id, :name, :email, :created_at, :role])
     end
     
     def update
@@ -22,7 +22,7 @@ class Api::V1::Admin::UsersController < Api::V1::ApplicationController
         @user.email = params['email']
         @user.role = params['role']
         if @user.save
-            render json: @user.as_json(except: [:password_digest, :updated_at]), status: :ok
+            render json: @user.as_json(only: [:id, :name, :email, :created_at, :role]), status: :ok
         else
             render json: { errors: 'failed' }, status: :unprocessable_entity
         end
@@ -30,7 +30,7 @@ class Api::V1::Admin::UsersController < Api::V1::ApplicationController
 
     def thisuser
         authorize User
-        render json: @current_user.as_json(except: [:password_digest, :updated_at])
+        render json: @current_user.as_json(only: [:id, :name, :email, :created_at, :role])
     end
 
     def destroy
