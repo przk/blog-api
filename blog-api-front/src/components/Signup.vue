@@ -46,9 +46,6 @@ export default {
   updated () {
     this.checkSignedIn()
   },
-  mounted () {
-    if (localStorage.csrf) this.$router.push('/')
-  },
   methods: {
     signup () {
       axios.post('/users', { name: this.name, email: this.email, password: this.password, password_confirmation: this.password_confirmation })

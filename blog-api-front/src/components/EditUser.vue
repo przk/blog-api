@@ -31,9 +31,6 @@ export default{
     }
   },
   mounted () {
-    if (!localStorage.csrf) {
-      this.$router.push('/signin')
-    }
     axios.get('/admin/user', { headers: { 'Authorization': 'Basic ' + localStorage.csrf } })
       .then(response => {
         this.id = response.data.id

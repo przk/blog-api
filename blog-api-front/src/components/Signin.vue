@@ -30,9 +30,6 @@ export default {
       error: ''
     }
   },
-  mounted () {
-    if (localStorage.csrf) this.$router.push('/')
-  },
   methods: {
     signin () {
       // this.$http.plain.post('/signin', {email: this.email, password: this.password})

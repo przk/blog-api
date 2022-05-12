@@ -28,8 +28,6 @@ export default {
     }
   },
   mounted () {
-    if (!localStorage.csrf) this.$router.push('/signin')
-    else if (localStorage.role !== 'admin') this.$router.go(-1)
     axios.get(`pages/${this.$route.params.pageId}`)
       .then(response => {
         this.pgtitle = response.data.title

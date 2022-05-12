@@ -9,6 +9,16 @@ function checkIfAdminOrGoBack (to, from, next) {
   else next()
 }
 
+function checkIfSignedInOrGoToLogin (to, from, next) {
+  if (!localStorage.csrf) next('/signin')
+  else next()
+}
+
+function checkIfSignedInOrGoBack (to, from, next) {
+  if (localStorage.csrf) next(from.path)
+  else next()
+}
+
 export default new Router(
   {
     routes: [
@@ -30,7 +40,8 @@ export default new Router(
       {
         path: '/editpage/:pageId',
         name: 'editPage',
-        component: () => import('@/components/EditPage')
+        component: () => import('@/components/EditPage'),
+        beforeEnter: checkIfAdminOrGoBack
       },
       {
         path: '/page/:pageId/comments/',
@@ -41,17 +52,13 @@ export default new Router(
         path: '/signin',
         name: 'Signin',
         component: () => import('@/components/Signin'),
-        beforeEnter: (to, from, next) => {
-          if (localStorage.signedIn) {
-            // this.$router.push('/')
-            return false
-          } else next()
-        }
+        beforeEnter: checkIfSignedInOrGoBack
       },
       {
         path: '/signup',
         name: 'Signup',
-        component: () => import('@/components/Signup')
+        component: () => import('@/components/Signup'),
+        beforeEnter: checkIfSignedInOrGoBack
       },
       {
         path: '/404',
@@ -91,7 +98,8 @@ export default new Router(
       {
         path: '/edituser',
         name: 'EditUser',
-        component: () => import('@/components/EditUser')
+        component: () => import('@/components/EditUser'),
+        beforeEnter: checkIfSignedInOrGoToLogin
       }
     ]
   }
